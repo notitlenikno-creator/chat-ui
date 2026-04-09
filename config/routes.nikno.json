@@ -1,0 +1,32 @@
+[
+  {
+    "name": "creator_strategy",
+    "description": "Use for creator growth plans, release strategies, monetization playbooks, audience development, platform positioning, and business decision support.",
+    "primary_model": "gpt-4o",
+    "fallback_models": ["gpt-4.1-mini", "gpt-4o-mini"]
+  },
+  {
+    "name": "brand_voice",
+    "description": "Use for brand messaging, bios, artist narratives, campaign copy, social hooks, website copy, and creator positioning language.",
+    "primary_model": "gpt-4.1",
+    "fallback_models": ["gpt-4o", "gpt-4.1-mini"]
+  },
+  {
+    "name": "ops_automation",
+    "description": "Use for backend architecture, workflow design, automation planning, admin operations, dashboards, permissions, and system implementation.",
+    "primary_model": "gpt-4.1",
+    "fallback_models": ["gpt-4o", "gpt-4o-mini"]
+  },
+  {
+    "name": "funding_intelligence",
+    "description": "Use for creator investment readiness, offer packaging, sponsor strategy, platform pricing, financial modeling, and monetization scenarios.",
+    "primary_model": "gpt-4o",
+    "fallback_models": ["gpt-4.1-mini", "gpt-4o-mini"]
+  },
+  {
+    "name": "casual_conversation",
+    "description": "Use for general chat, lightweight questions, brainstorming, and requests that do not need specialized routing.",
+    "primary_model": "gpt-4o-mini",
+    "fallback_models": ["gpt-4.1-mini"]
+  }
+]
