@@ -16,6 +16,7 @@ export async function sendWix(collectionId: string, dataItem: Record<string, unk
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
+			// Wix REST API keys are passed without a scheme prefix per Wix API docs
 			Authorization: apiKey,
 			"wix-site-id": siteId,
 		},
@@ -27,6 +28,8 @@ export async function sendWix(collectionId: string, dataItem: Record<string, unk
 
 	if (!res.ok) {
 		const text = await res.text();
-		logger.error(`Wix API sync failed: ${res.status} ${res.statusText} — ${text}`);
+		const message = `Wix API sync failed: ${res.status} ${res.statusText} — ${text}`;
+		logger.error(message);
+		throw new Error(message);
 	}
 }

@@ -5,10 +5,11 @@ import { sendWix } from "$lib/server/sendWix";
 export const POST: RequestHandler = async ({ request }) => {
 	const body = await request.json();
 
-	const { collectionId, data } = body as {
-		collectionId?: string;
-		data?: Record<string, unknown>;
-	};
+	const collectionId = typeof body?.collectionId === "string" ? body.collectionId : undefined;
+	const data =
+		body?.data && typeof body.data === "object" && !Array.isArray(body.data)
+			? (body.data as Record<string, unknown>)
+			: undefined;
 
 	if (!collectionId || !data) {
 		return json({ ok: false, error: "collectionId and data are required" }, { status: 400 });
