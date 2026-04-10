@@ -10,77 +10,42 @@
 		onmessage?: (content: string) => void;
 	}
 
-	let { currentModel: _currentModel, onmessage }: Props = $props();
+	let { currentModel, onmessage }: Props = $props();
 
-	$effect(() => {
-		// referenced to appease linter while UI blocks are commented out
-		void _currentModel;
-		void onmessage;
-	});
+	const starterPrompts = [
+		"Summarize the latest AI trends in 5 concise bullets.",
+		"Help me plan a 3-day TypeScript learning roadmap.",
+		"Draft a concise, friendly email asking for project feedback.",
+	];
 </script>
 
-<div class="my-auto grid items-center justify-center gap-8 text-center">
+<div class="my-auto grid w-full max-w-3xl items-center justify-center gap-6 text-center">
 	<div
-		class="flex -translate-y-16 select-none items-center rounded-xl text-3xl font-semibold md:-translate-y-12 md:text-5xl"
+		class="mx-auto flex select-none items-center rounded-xl text-3xl font-semibold md:text-5xl"
 	>
-		<Logo classNames="size-12 md:size-20 dark:invert mr-0.5" />
+		<Logo classNames="mr-0.5 size-12 dark:invert md:size-20" />
 		{publicConfig.PUBLIC_APP_NAME}
 	</div>
-	<!-- <div class="lg:col-span-1">
-		<div>
-			<div class="mb-3 flex items-center text-2xl font-semibold">
-				<Logo classNames="mr-1 flex-none dark:invert" />
-				{publicConfig.PUBLIC_APP_NAME}
-				<div
-					class="ml-3 flex h-6 items-center rounded-lg border border-gray-100 bg-gray-50 px-2 text-base text-gray-400 dark:border-gray-700/60 dark:bg-gray-800"
-				>
-					{publicConfig.PUBLIC_VERSION}
-				</div>
-			</div>
-			<p class="text-base text-gray-600 dark:text-gray-400">
-				{publicConfig.PUBLIC_APP_DESCRIPTION ||
-					"Making the community's best AI chat models available to everyone."}
-			</p>
-		</div>
+
+	<div class="space-y-1">
+		<p class="mx-auto max-w-2xl text-sm text-gray-600 dark:text-gray-300 md:text-base">
+			Start a new chat with
+			<span class="font-semibold text-gray-800 dark:text-gray-100">{currentModel.displayName}</span>.
+		</p>
+		<p class="mx-auto max-w-2xl text-xs text-gray-500 dark:text-gray-400 md:text-sm">
+			Choose a starter prompt below or type your own message.
+		</p>
 	</div>
-	<div class="lg:col-span-2 lg:pl-24">
-		{#each JSON5.parse(publicConfig.PUBLIC_ANNOUNCEMENT_BANNERS || "[]") as banner}
-			<AnnouncementBanner classNames="mb-4" title={banner.title}>
-				<a
-					target={banner.external ? "_blank" : "_self"}
-					href={banner.linkHref}
-					class="mr-2 flex items-center underline hover:no-underline">{banner.linkTitle}</a
-				>
-			</AnnouncementBanner>
+
+	<div class="grid gap-2 sm:grid-cols-3">
+		{#each starterPrompts as prompt}
+			<button
+				type="button"
+				class="rounded-xl border bg-white/70 p-3 text-left text-sm text-gray-700 transition hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/40 dark:border-gray-700 dark:bg-gray-800/70 dark:text-gray-200 dark:hover:bg-gray-800 dark:focus-visible:ring-white/40"
+				onclick={() => onmessage?.(prompt)}
+			>
+				{prompt}
+			</button>
 		{/each}
-		<div class="overflow-hidden rounded-xl border dark:border-gray-800">
-			<div class="flex p-3">
-				<div>
-					<div class="text-sm text-gray-600 dark:text-gray-400">Current Model</div>
-					<div class="flex items-center gap-1.5 font-semibold max-sm:text-smd">
-						{#if currentModel.logoUrl}
-							<img
-								class="aspect-square size-4 rounded border bg-white dark:border-gray-700"
-								src={currentModel.logoUrl}
-								alt=""
-							/>
-						{:else}
-							<div
-								class="size-4 rounded border border-transparent bg-gray-300 dark:bg-gray-800"
-							></div>
-						{/if}
-						{currentModel.displayName}
-					</div>
-				</div>
-				<a
-					href="{base}/settings/{currentModel.id}"
-					aria-label="Settings"
-					class="btn ml-auto flex h-7 w-7 self-start rounded-full bg-gray-100 p-1 text-xs hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:hover:bg-gray-600"
-					><IconGear /></a
-				>
-			</div>
-			<ModelCardMetadata variant="dark" model={currentModel} />
-		</div>
 	</div>
-	<div class="h-40 sm:h-24"></div> -->
 </div>
