@@ -10,8 +10,9 @@
     "branch": "main",
     "agentContract": "AGENTS.md",
     "bodyRegistry": ".hnuta/repositories.json",
-    "proofCycle": "skills/hnuta-proof-cycle/SKILL.md",
-    "perception": "skills/hnuta-perception-experience/SKILL.md"
+    "perception": "skills/hnuta-perception-experience/SKILL.md",
+    "convergenceGuard": "skills/hnuta-convergence-guardian/SKILL.md",
+    "buildTruth": "skills/hnuta-build-truth/SKILL.md"
   },
   "governance": {
     "directMainPush": false,
@@ -31,7 +32,7 @@
       "resolve-current-control-plane-main",
       "absorb-control-plane-AGENTS.md",
       "absorb-body-registry",
-      "absorb-proof-cycle",
+      "absorb-convergence-guardian-and-build-truth",
       "absorb-perception",
       "prove-local-branch-freshness"
     ]
