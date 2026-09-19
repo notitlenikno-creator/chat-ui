@@ -1,0 +1,37 @@
+{
+  "schema": "hnuta.organ-control-plane-pointer.v1",
+  "schemaVersion": 1,
+  "organization": "notitlenikno-creator",
+  "repository": "notitlenikno-creator/chat-ui",
+  "role": "agent-chat-surface",
+  "bodyClass": "ORGAN",
+  "controlPlane": {
+    "repository": "notitlenikno-creator/hoodninja",
+    "branch": "main",
+    "agentContract": "AGENTS.md",
+    "bodyRegistry": ".hnuta/repositories.json",
+    "proofCycle": "skills/hnuta-proof-cycle/SKILL.md",
+    "perception": "skills/hnuta-perception-experience/SKILL.md"
+  },
+  "governance": {
+    "directMainPush": false,
+    "providerIndependent": true,
+    "staleConversationAuthoritative": false,
+    "proofBeforeCommit": true,
+    "exactHeadProofBeforeMerge": true,
+    "duplicateControlPlaneForbidden": true
+  },
+  "absorb": {
+    "required": true,
+    "failClosed": true,
+    "sequence": [
+      "read-local-AGENTS.md",
+      "resolve-current-control-plane-main",
+      "absorb-control-plane-AGENTS.md",
+      "absorb-body-registry",
+      "absorb-proof-cycle",
+      "absorb-perception",
+      "prove-local-branch-freshness"
+    ]
+  }
+}
