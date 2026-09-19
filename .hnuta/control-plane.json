@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "organRepository": "notitlenikno-creator/chat-ui",
+  "organRole": "agent-chat-surface",
+  "controlPlane": "notitlenikno-creator/hoodninja",
+  "controlPlaneBranch": "main",
+  "controlPlaneEntryContract": "AGENTS.md",
+  "bodyRegistry": ".hnuta/repositories.json",
+  "bootstrapCommand": "node scripts/hnuta.mjs bootstrap --entry agent",
+  "controlPlaneRootEnv": "HNUTA_CONTROL_PLANE_ROOT",
+  "policy": {
+    "chatIsAdvisoryOnly": true,
+    "canonicalControlPlaneRequired": true,
+    "noDirectMain": true,
+    "codexMergeOperator": true,
+    "staleBaseMustReconcile": true,
+    "bodyImpactNeedsAffectedRepoEvidence": true,
+    "noStubMockPlaceholderCompletion": true
+  },
+  "health": {
+    "state": "UNPROVEN_UNTIL_LIVE_BOOTSTRAP",
+    "note": "This pointer establishes body membership and entry policy only; it is not runtime-health proof."
+  }
+}
