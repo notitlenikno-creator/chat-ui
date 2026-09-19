@@ -19,7 +19,9 @@
     "staleConversationAuthoritative": false,
     "proofBeforeCommit": true,
     "exactHeadProofBeforeMerge": true,
-    "duplicateControlPlaneForbidden": true
+    "duplicateControlPlaneForbidden": true,
+    "codexMergeOperator": true,
+    "providerIndependenceScope": "execution-and-review-only"
   },
   "absorb": {
     "required": true,
